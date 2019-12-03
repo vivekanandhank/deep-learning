@@ -1,3 +1,4 @@
+# Importing libraries 
 import numpy as np
 import matplotlib.pyplot as plt
 import os
@@ -11,8 +12,8 @@ from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten
 from tensorflow.keras.layers import Conv2D, MaxPooling2D
 
 import pickle
-datadir="E:\\fy\\train"
-category=["date","text"]
+datadir=()                           # directory of the file
+category=[" "," "]                   # types of field in your project
 
 
 for i in category:
@@ -26,7 +27,7 @@ for i in category:
 print(img_array.shape)
 
 img_size=110
-new_array =cv2.resize(img_array,(img_size,img_size))
+new_array =cv2.resize(img_array,(img_size,img_size))     # resizing the image to implement the standardisation of images
 plt.imshow(new_array,cmap='gray')
 plt.show()
 
@@ -61,9 +62,9 @@ X = x/255.0
 
 model = Sequential()
 
-model.add(Conv2D(256, (3, 3), input_shape=X.shape[1:]))
-model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Conv2D(256, (3, 3), input_shape=X.shape[1:]))        #adding  2D convolution 
+model.add(Activation('relu'))                                  # adding Activation Function (relu function)
+model.add(MaxPooling2D(pool_size=(2, 2)))                      # adding MaxPooling
 
 model.add(Conv2D(256, (3, 3)))
 model.add(Activation('relu'))
